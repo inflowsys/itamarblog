@@ -50,19 +50,24 @@
 
  <div class="container">
 
+
+
               <h1>Welcome to itamar post</h1>
-              <h2>latest post</h1>
+
+              {% load static %}
+
+              <img src="{% static 'posts/main_pic.png'  %}" />
+
+
 
               {% for post in posts.all %}
 
               <hr>
-              <a href="{% url 'post_details' post.id %}"><b>{{post.title}}</b></a>
-              <br />
-              {{post.pub_date_pretty}}
-              <br />
+              <a href="{% url 'post_details' post.id %}"><h3>{{post.title}}</h3></a>
+              <h4><span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{post.pub_date_pretty}}</h4>
               {{post.summary}}
               <br />
-              <img src="{{post.image.url}}" class=img-responsive>
+              <img src="{{post.image.url}}" class="img-responsive center-block" style="max-height:200px;">
               <br />
               {% endfor %}
 
